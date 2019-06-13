@@ -74,8 +74,7 @@ class window(Ui_Camera_loading_gui):
     def Load_data(self,filename):
         with open(filename) as inputfile:
             df = pd.read_csv(inputfile, header = None)
-            Num_cols = len(df.columns)                             #no. of columns
-            df.drop(df.columns[Num_cols-1], axis=1, inplace=True)  #delete last column
+            df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
             df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
         #plt.figure()
             print('load success')
