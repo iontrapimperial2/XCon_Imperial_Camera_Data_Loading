@@ -78,7 +78,8 @@ class window(Ui_Camera_loading_gui):
             df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
         #plt.figure()
             print('load success')
-        self.plot_pic.setImage(np.array(df), autoRange = True, autoLevels = True, autoHistogramRange = True)
+        plot = np.array(df)
+        self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
         
 
             
