@@ -72,15 +72,18 @@ class window(Ui_Camera_loading_gui):
             print('not a suitable file format selected')
         
     def Load_data(self,filename):
-        with open(filename) as inputfile:
-            df = pd.read_csv(inputfile, header = None)
-            df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
-            df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
-        #plt.figure()
-            print('load success')
-        plot = np.array(df)
-        self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
-        
+        try:
+            with open(filename) as inputfile:
+                df = pd.read_csv(inputfile, header = None)
+                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
+                df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
+            #plt.figure()
+                print('load success')
+            plot = np.array(df)
+            self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+        except:
+            print('load error')
+            
 
             
         

@@ -10,7 +10,7 @@ import pandas as pd
 
 #df = pd.read_csv('C:/Users/IonTrap/code/python/XCon_Imperial_Camera_2/test.txt', header = None)
 
-a = 'C:/Users/IonTrap/code/python/XCon_Imperial_Camera_2/test_kinetic.txt'
+a = 'C:/Users/IonTrap/code/python/XCon_Imperial_Camera_2/section_test2.txt'
 df = pd.read_csv(a, header = None)
 
 def load_file(filname):
