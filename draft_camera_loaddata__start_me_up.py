@@ -8,7 +8,7 @@ Created on Thu Jun 13 14:36:24 2019
 import sys
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QFileDialog
-import random
+import csv
 import pyqtgraph as pg
 import numpy as np
 import pandas as pd
@@ -24,10 +24,17 @@ class window(Ui_Camera_loading_gui):
         self.filename = ''
         
         
+        self.start_col = 0
+        self.end_col = 0
+        self.start_row = 0
+        self.end_row = 0
+        self.pic_width = 0
+        self.pic_num = 1
         
         #-- Push Buttons -----------------------------------------------------#
         self.pushButton_Browse.clicked.connect(self.Browse_data)
         self.pushButton_Load.clicked.connect(self.import_data)
+        self.pushButton_show.clicked.connect(self.show_kinetic)
         
         #-- Pic show -----------------------------------------------------#
         self.show_pic = pg.PlotItem()
@@ -72,24 +79,81 @@ class window(Ui_Camera_loading_gui):
             print('not a suitable file format selected')
         
     def Load_data(self,filename):
-        try:
+
+                    
+       # try:
+        a = filename.rfind('.')
+        with open(filename[:a] + '_cam_settings.txt') as file:
+            cam_settings = list(csv.reader(file))
+        if 'Kinetic' in str(cam_settings):
+            self.start_row = int(str(cam_settings[14])[14:-2])
+
+            self.end_row = int(str(cam_settings[15])[12:-2])
+
+            self.pic_width = self.end_row - self.start_row + 1
+            self.pic_num = int(str(cam_settings[10])[26:-2])
+            print(self.pic_num)
+            print(self.pic_width)
+            self.comboBox_image_num.addItems(list(str(i) for i in range(0,self.pic_num+1,1)))
+            
             with open(filename) as inputfile:
                 df = pd.read_csv(inputfile, header = None)
                 df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
                 df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
-            #plt.figure()
+                plot = np.array(df)
+                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                
+            
+        else:
+            self.comboBox_image_num.clear()
+            with open(filename) as inputfile:
+                df = pd.read_csv(inputfile, header = None)
+                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
+                df.drop(df.columns[0], axis=1, inplace=True)   #delete first column
                 print('load success')
-            plot = np.array(df)
-            self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
-        except:
-            print('load error')
-            
+                plot = np.array(df)
+                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+   
+        with open(filename) as inputfile:
 
+            df = pd.read_csv(inputfile, header = None)
+
+            a = list(i for i in range(2*self.pic_width, self.pic_num*self.pic_width, 1))
+            a = a +list(i for i in range(0, self.pic_width,1))
+            #print(a)
+            df.drop(a, inplace=True)
+            df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
+            df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
             
-        
-        #self.show_pic.gca().invert_yaxis()                               #inverts y axis for correct orientation
-        
-        #self.show_pic.show()
+            #i
+            #print(df)
+        #plt.figure()
+            print('load success')
+        #plot = np.array(df)
+        #self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+       # except:
+        #    print('load error')
+
+    def show_kinetic(self):
+        filename = str(self.lineEdit_Browse.text())
+        with open(filename) as inputfile:
+            if int(self.comboBox_image_num.currentText()) == 0:
+                df = pd.read_csv(inputfile, header = None)
+                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
+                df.drop(df.columns[0], axis=1, inplace=True)   #delete first column
+                print('load success')
+                plot = np.array(df)
+                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+            else:
+                df = pd.read_csv(inputfile, header = None)
+                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
+                df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
+                num = int(self.comboBox_image_num.currentText())
+                a = list((num*self.pic_width, self.pic_num*self.pic_width, 1))
+                a = a +list(range(0, (num-1)*self.pic_width,1))
+                pic = df.drop(a)
+                plot = np.array(pic)
+                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

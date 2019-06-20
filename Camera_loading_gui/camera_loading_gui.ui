@@ -20,11 +20,100 @@
       <x>10</x>
       <y>10</y>
       <width>791</width>
-      <height>584</height>
+      <height>614</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="1">
+     <item row="1" column="1">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="2">
+      <spacer name="horizontalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="5" column="0">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>460</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Image:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QComboBox" name="comboBox_image_num"/>
+     </item>
+     <item row="3" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>90</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="3">
+      <spacer name="horizontalSpacer_7">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="1" colspan="3">
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
         <string>Load</string>
@@ -35,10 +124,33 @@
           <x>10</x>
           <y>10</y>
           <width>741</width>
-          <height>81</height>
+          <height>96</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="pushButton_Browse">
+           <property name="text">
+            <string>Browse</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="1">
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
@@ -55,24 +167,21 @@
            </property>
           </spacer>
          </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButton_Load">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Load</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="2">
           <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="0" column="0">
-          <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -103,80 +212,27 @@
            </property>
           </spacer>
          </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="pushButton_Browse">
-           <property name="text">
-            <string>Browse</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit"/>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="pushButton_Load">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Load</string>
-           </property>
-          </widget>
+          <widget class="QLineEdit" name="lineEdit_Browse"/>
          </item>
         </layout>
        </widget>
       </widget>
      </item>
-     <item row="3" column="0">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>90</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="1">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="4" column="0">
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>460</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="4" column="1">
+     <item row="5" column="1" colspan="3">
       <layout class="QGridLayout" name="gridLayout_pic"/>
+     </item>
+     <item row="4" column="3">
+      <widget class="QPushButton" name="pushButton_show">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Show</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
