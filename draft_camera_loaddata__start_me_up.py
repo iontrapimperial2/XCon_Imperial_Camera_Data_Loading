@@ -149,10 +149,10 @@ class window(Ui_Camera_loading_gui):
                 df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
                 df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
                 num = int(self.comboBox_image_num.currentText())
-                a = list((num*self.pic_width, self.pic_num*self.pic_width, 1))
-                a = a +list(range(0, (num-1)*self.pic_width,1))
-                pic = df.drop(a)
-                plot = np.array(pic)
+                a = list(range(num*self.pic_width, (self.pic_num*self.pic_width), 1))
+                b = a +list(range(0, (num-1)*self.pic_width,1))
+                df.drop(b, axis=0, inplace=True)
+                plot = np.array(df)
                 self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
 
 if __name__ == '__main__':
