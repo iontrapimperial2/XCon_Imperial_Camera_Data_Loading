@@ -40,8 +40,7 @@ class window(Ui_Camera_loading_gui):
         self.show_pic = pg.PlotItem()
         self.plot_pic = pg.ImageView(view = self.show_pic)
         self.plot_pic.view.invertY(False)
-        #self.show_pic.showAxis('top')
-        #self.show_pic.hideAxis('bottom')
+
         
         
         self.show_pic.setAspectLocked(True)
@@ -78,82 +77,62 @@ class window(Ui_Camera_loading_gui):
         except UnicodeDecodeError:
             print('not a suitable file format selected')
         
-    def Load_data(self,filename):
-
-                    
-       # try:
-        a = filename.rfind('.')
-        with open(filename[:a] + '_cam_settings.txt') as file:
-            cam_settings = list(csv.reader(file))
-        if 'Kinetic' in str(cam_settings):
-            self.start_row = int(str(cam_settings[14])[14:-2])
-
-            self.end_row = int(str(cam_settings[15])[12:-2])
-
-            self.pic_width = self.end_row - self.start_row + 1
-            self.pic_num = int(str(cam_settings[10])[26:-2])
-            print(self.pic_num)
-            print(self.pic_width)
-            self.comboBox_image_num.addItems(list(str(i) for i in range(0,self.pic_num+1,1)))
-            
-            with open(filename) as inputfile:
-                df = pd.read_csv(inputfile, header = None)
-                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
-                df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
-                plot = np.array(df)
-                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+    def Load_data(self,filename):                
+        try:
+            a = filename.rfind('.')
+            with open(filename[:a] + '_cam_settings.txt') as file:
+                cam_settings = list(csv.reader(file))
+            if 'Kinetic' in str(cam_settings):
+                self.start_row = int(str(cam_settings[14])[14:-2])
+    
+                self.end_row = int(str(cam_settings[15])[12:-2])
+    
+                self.pic_width = self.end_row - self.start_row + 1
+                self.pic_num = int(str(cam_settings[10])[26:-2])
+                print(self.pic_num)
+                print(self.pic_width)
+                self.comboBox_image_num.addItems(list(str(i) for i in range(0,self.pic_num+1,1)))
                 
-            
-        else:
-            self.comboBox_image_num.clear()
-            with open(filename) as inputfile:
-                df = pd.read_csv(inputfile, header = None)
-                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
-                df.drop(df.columns[0], axis=1, inplace=True)   #delete first column
-                print('load success')
-                plot = np.array(df)
-                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
-   
-        with open(filename) as inputfile:
+                with open(filename) as inputfile:
+                    df = pd.read_csv(inputfile, header = None)
+                    df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
+                    df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
+                    plot = np.array(df)
+                    self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                    
+                
+            else:
+                self.comboBox_image_num.clear()
+                with open(filename) as inputfile:
+                    df = pd.read_csv(inputfile, header = None)
+                    df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
+                    df.drop(df.columns[0], axis=1, inplace=True)   #delete first column
+                    print('load success')
+                    plot = np.array(df)
+                    self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
 
-            df = pd.read_csv(inputfile, header = None)
-
-            a = list(i for i in range(2*self.pic_width, self.pic_num*self.pic_width, 1))
-            a = a +list(i for i in range(0, self.pic_width,1))
-            #print(a)
-            df.drop(a, inplace=True)
-            df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
-            df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
-            
-            #i
-            #print(df)
-        #plt.figure()
             print('load success')
-        #plot = np.array(df)
-        #self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
-       # except:
-        #    print('load error')
+        except:
+            print('load error')
 
     def show_kinetic(self):
         filename = str(self.lineEdit_Browse.text())
         with open(filename) as inputfile:
+            df1 = pd.read_csv(inputfile, header = None)
+            df1.drop(df1.columns[-1], axis=1, inplace=True)  #delete last column
+            df1.drop(df1.columns[0], axis=1, inplace=True)   #delete first column
             if int(self.comboBox_image_num.currentText()) == 0:
-                df = pd.read_csv(inputfile, header = None)
-                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
-                df.drop(df.columns[0], axis=1, inplace=True)   #delete first column
+                
                 print('load success')
-                plot = np.array(df)
-                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                plot = np.array(df1)
             else:
-                df = pd.read_csv(inputfile, header = None)
-                df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
-                df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
                 num = int(self.comboBox_image_num.currentText())
                 a = list(range(num*self.pic_width, (self.pic_num*self.pic_width), 1))
                 b = a +list(range(0, (num-1)*self.pic_width,1))
-                df.drop(b, axis=0, inplace=True)
-                plot = np.array(df)
-                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                pic = df1.drop(b)
+                plot = np.array(pic)
+            self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

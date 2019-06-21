@@ -1,0 +1,46 @@
+
+ 
+ 2019-06-21 13:48:34.071362
+ Acquisition Mode: Kinetic Scan
+ Read Mode: Image
+ Temperature: -25 °C
+ Exposure Time: 0.001 s
+ EMCCD Gain: 300
+ No. of Accumulations: 1
+ Accumulate Cycle Time: 0.000 s
+ No. of Kinetic Series: 1
+ Kinetic Cycle Time: 0.003 s
+ Start Column: 1
+ End Column: 200
+ Start Row: 1
+ End Row: 300
+ 
+ 2019-06-21 13:48:57.306806
+ Acquisition Mode: Kinetic Scan
+ Read Mode: Image
+ Temperature: -34 °C
+ Exposure Time: 0.001 s
+ EMCCD Gain: 300
+ No. of Accumulations: 1
+ Accumulate Cycle Time: 0.000 s
+ No. of Kinetic Series: 5
+ Kinetic Cycle Time: 0.003 s
+ Start Column: 1
+ End Column: 200
+ Start Row: 1
+ End Row: 300
+ 
+ 2019-06-21 13:49:14.349823
+ Acquisition Mode: Kinetic Scan
+ Read Mode: Image
+ Temperature: -38 °C
+ Exposure Time: 0.001 s
+ EMCCD Gain: 300
+ No. of Accumulations: 1
+ Accumulate Cycle Time: 0.000 s
+ No. of Kinetic Series: 5
+ Kinetic Cycle Time: 0.003 s
+ Start Column: 1
+ End Column: 200
+ Start Row: 1
+ End Row: 300
