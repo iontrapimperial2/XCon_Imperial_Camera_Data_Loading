@@ -83,6 +83,7 @@ class window(Ui_Camera_loading_gui):
             with open(filename[:a] + '_cam_settings.txt') as file:
                 cam_settings = list(csv.reader(file))
             if 'Kinetic' in str(cam_settings):
+                self.comboBox_image_num.clear()
                 self.start_row = int(str(cam_settings[14])[14:-2])
     
                 self.end_row = int(str(cam_settings[15])[12:-2])
@@ -118,20 +119,24 @@ class window(Ui_Camera_loading_gui):
     def show_kinetic(self):
         filename = str(self.lineEdit_Browse.text())
         with open(filename) as inputfile:
-            df1 = pd.read_csv(inputfile, header = None)
-            df1.drop(df1.columns[-1], axis=1, inplace=True)  #delete last column
-            df1.drop(df1.columns[0], axis=1, inplace=True)   #delete first column
-            if int(self.comboBox_image_num.currentText()) == 0:
-                
-                print('load success')
-                plot = np.array(df1)
-            else:
-                num = int(self.comboBox_image_num.currentText())
-                a = list(range(num*self.pic_width, (self.pic_num*self.pic_width), 1))
-                b = a +list(range(0, (num-1)*self.pic_width,1))
-                pic = df1.drop(b)
-                plot = np.array(pic)
-            self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+            try:
+                df1 = pd.read_csv(inputfile, header = None)
+                df1.drop(df1.columns[-1], axis=1, inplace=True)  #delete last column
+                df1.drop(df1.columns[0], axis=1, inplace=True)   #delete first column
+                if int(self.comboBox_image_num.currentText()) == 0:
+                    
+                    print('load success')
+                    plot = np.array(df1)
+                else:
+                    num = int(self.comboBox_image_num.currentText())
+                    a = list(range(num*self.pic_width, (self.pic_num*self.pic_width), 1))
+                    b = a +list(range(0, (num-1)*self.pic_width,1))
+                    pic = df1.drop(b)
+                    plot = np.array(pic)
+                self.plot_pic.setImage(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+            
+            except:
+                print('not a kinetic image')
 
 
 if __name__ == '__main__':
