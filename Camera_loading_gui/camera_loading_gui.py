@@ -2,11 +2,12 @@
 
 # Form implementation generated from reading ui file 'camera_loading_gui.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_Camera_loading_gui(object):
     def setupUi(self, Camera_loading_gui):
@@ -110,6 +111,8 @@ class Ui_Camera_loading_gui(object):
         self.pushButton_show.setText(_translate("Camera_loading_gui", "Show"))
 
 
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -118,4 +121,3 @@ if __name__ == "__main__":
     ui.setupUi(Camera_loading_gui)
     Camera_loading_gui.show()
     sys.exit(app.exec_())
-
