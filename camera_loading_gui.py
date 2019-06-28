@@ -2,16 +2,17 @@
 
 # Form implementation generated from reading ui file 'camera_loading_gui.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Camera_loading_gui(object):
     def setupUi(self, Camera_loading_gui):
         Camera_loading_gui.setObjectName("Camera_loading_gui")
-        Camera_loading_gui.resize(827, 660)
+        Camera_loading_gui.resize(827, 703)
         self.centralWidget = QtWidgets.QWidget(Camera_loading_gui)
         self.centralWidget.setObjectName("centralWidget")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.centralWidget)
@@ -50,13 +51,6 @@ class Ui_Camera_loading_gui(object):
         self.gridLayout_2 = QtWidgets.QGridLayout()
         self.gridLayout_2.setSpacing(6)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem5, 0, 0, 1, 1)
-        self.pushButton_Browse = QtWidgets.QPushButton(self.groupBox)
-        self.pushButton_Browse.setObjectName("pushButton_Browse")
-        self.gridLayout_2.addWidget(self.pushButton_Browse, 1, 0, 1, 1)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem6, 0, 1, 1, 1)
         self.pushButton_Load = QtWidgets.QPushButton(self.groupBox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -64,14 +58,22 @@ class Ui_Camera_loading_gui(object):
         sizePolicy.setHeightForWidth(self.pushButton_Load.sizePolicy().hasHeightForWidth())
         self.pushButton_Load.setSizePolicy(sizePolicy)
         self.pushButton_Load.setObjectName("pushButton_Load")
-        self.gridLayout_2.addWidget(self.pushButton_Load, 1, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.pushButton_Load, 2, 3, 1, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem5, 3, 0, 1, 1)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem6, 1, 1, 1, 1)
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem7, 0, 2, 1, 1)
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem8, 2, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem7, 1, 0, 1, 1)
         self.lineEdit_Browse = QtWidgets.QLineEdit(self.groupBox)
         self.lineEdit_Browse.setObjectName("lineEdit_Browse")
-        self.gridLayout_2.addWidget(self.lineEdit_Browse, 1, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.lineEdit_Browse, 2, 1, 1, 1)
+        self.pushButton_Browse = QtWidgets.QPushButton(self.groupBox)
+        self.pushButton_Browse.setObjectName("pushButton_Browse")
+        self.gridLayout_2.addWidget(self.pushButton_Browse, 2, 0, 1, 1)
+        self.checkBox_show_max = QtWidgets.QCheckBox(self.groupBox)
+        self.checkBox_show_max.setObjectName("checkBox_show_max")
+        self.gridLayout_2.addWidget(self.checkBox_show_max, 1, 3, 1, 1)
         self.gridLayout_4.addLayout(self.gridLayout_2, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.groupBox, 3, 1, 1, 3)
         self.gridLayout_pic = QtWidgets.QGridLayout()
@@ -105,9 +107,12 @@ class Ui_Camera_loading_gui(object):
         Camera_loading_gui.setWindowTitle(_translate("Camera_loading_gui", "Camera_loading_gui"))
         self.label.setText(_translate("Camera_loading_gui", "Image:"))
         self.groupBox.setTitle(_translate("Camera_loading_gui", "Load"))
-        self.pushButton_Browse.setText(_translate("Camera_loading_gui", "Browse"))
         self.pushButton_Load.setText(_translate("Camera_loading_gui", "Load"))
+        self.pushButton_Browse.setText(_translate("Camera_loading_gui", "Browse"))
+        self.checkBox_show_max.setText(_translate("Camera_loading_gui", "Show Max pixel"))
         self.pushButton_show.setText(_translate("Camera_loading_gui", "Show"))
+
+
 
 
 if __name__ == "__main__":
@@ -118,4 +123,3 @@ if __name__ == "__main__":
     ui.setupUi(Camera_loading_gui)
     Camera_loading_gui.show()
     sys.exit(app.exec_())
-
