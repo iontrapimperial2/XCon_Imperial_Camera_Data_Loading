@@ -48,6 +48,7 @@ class window(Ui_Camera_loading_gui):
         self.gridLayout_pic.addWidget(self.image)
         
         self.plot_image = self.image.addPlot(1, 0, rowspan=1, colspan=1)
+        #self.plot_image.getViewBox().invertY(True)
         self.plot_image.setAspectLocked()
 
         self.projection_top = self.image.addPlot(0, 0, rowspan=1, colspan=1)
@@ -57,6 +58,7 @@ class window(Ui_Camera_loading_gui):
         self.projection_side = self.image.addPlot(1, 1, rowspan=1, colspan=1)
         self.projection_side.showGrid(x = True, y = True, alpha = 0.75)
         self.projection_side.setYLink(self.plot_image)
+        #self.projection_side.getViewBox().invertY(True)
         
         self.plot_timestamp = self.image.addPlot(0, 1, rowspan=1, colspan=1)
         self.plot_timestamp.hideAxis('bottom')
