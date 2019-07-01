@@ -128,8 +128,8 @@ class window(Ui_Camera_loading_gui):
                             for col in range(df.shape[1]):
                                 if df.iat[row,col] == b:
                                     print(row, col)
-                                    r.append(row)
-                                    c.append(col)
+                                    r.append(row+ 0.5)
+                                    c.append(col+ 0.5)
                         data = r, c
                         print(data)
                         self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
@@ -167,8 +167,8 @@ class window(Ui_Camera_loading_gui):
                             for col in range(df.shape[1]):
                                 if df.iat[row,col] == b:
                                     print(row, col)
-                                    r.append(row)
-                                    c.append(col)
+                                    r.append(row+ 0.5)
+                                    c.append(col+ 0.5)
                         data = r, c
                         print(data)
                         self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
@@ -225,8 +225,8 @@ class window(Ui_Camera_loading_gui):
                             for col in range(df1.shape[1]):
                                 if df1.iat[row,col] == b:
                                     print(row, col)
-                                    r.append(row)
-                                    c.append(col)
+                                    r.append(row+ 0.5)
+                                    c.append(col+ 0.5)
                         data = r, c
                         print(data)
                         self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
@@ -262,8 +262,8 @@ class window(Ui_Camera_loading_gui):
                             for col in range(pic.shape[1]):
                                 if pic.iat[row,col] == b:
                                     print(row, col)
-                                    r.append(row)
-                                    c.append(col)
+                                    r.append(row+ 0.5)
+                                    c.append(col+ 0.5)
                         data = r, c
                         print(data)
                         self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
