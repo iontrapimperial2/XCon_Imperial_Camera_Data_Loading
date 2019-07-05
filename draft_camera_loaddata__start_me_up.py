@@ -54,6 +54,7 @@ class window(Ui_Camera_loading_gui):
         self.projection_top = self.image.addPlot(0, 0, rowspan=1, colspan=1)
         self.projection_top.showGrid(x = True, y = True, alpha = 0.75) 
         self.projection_top.setXLink(self.plot_image)
+
         
         self.projection_side = self.image.addPlot(1, 1, rowspan=1, colspan=1)
         self.projection_side.showGrid(x = True, y = True, alpha = 0.75)
@@ -114,8 +115,8 @@ class window(Ui_Camera_loading_gui):
                     df = pd.read_csv(inputfile, header = None)
                     df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
                     df.drop(df.columns[0], axis=1, inplace=True)           #delete first column
-                    plot = np.array(df)
-                    img = pg.ImageItem(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                    plot = np.flip(np.array(df), axis = 0)
+                    img = pg.ImageItem(np.rot90(plot,3), autoRange = True, autoLevels = True, autoHistogramRange = True)
                     self.plot_image.addItem(img)
                     
                     ##plot cross on pixel of highest count if check box is checked##
@@ -132,7 +133,7 @@ class window(Ui_Camera_loading_gui):
                                     c.append(col+ 0.5)
                         data = r, c
                         print(data)
-                        self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
+                        self.plot_image.plot(c,r, symbol = 'x', symbolBrush = (209,111,111,255))
                     else:
                         None
                     
@@ -153,8 +154,8 @@ class window(Ui_Camera_loading_gui):
                     df = pd.read_csv(inputfile, header = None)
                     df.drop(df.columns[-1], axis=1, inplace=True)  #delete last column
                     df.drop(df.columns[0], axis=1, inplace=True)   #delete first column
-                    plot = np.array(df)
-                    img = pg.ImageItem(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                    plot = np.flip(np.array(df), axis = 0)
+                    img = pg.ImageItem(np.rot90(plot,3), autoRange = True, autoLevels = True, autoHistogramRange = True)
                     self.plot_image.addItem(img)
                     
                     ##plot cross on pixel of highest count if check box is checked##
@@ -171,7 +172,7 @@ class window(Ui_Camera_loading_gui):
                                     c.append(col+ 0.5)
                         data = r, c
                         print(data)
-                        self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
+                        self.plot_image.plot(c,r, symbol = 'x', symbolBrush = (209,111,111,255))
                     
                     else:
                         None
@@ -211,8 +212,8 @@ class window(Ui_Camera_loading_gui):
                 df1.drop(df1.columns[-1], axis=1, inplace=True)  #delete last column
                 df1.drop(df1.columns[0], axis=1, inplace=True)   #delete first column
                 if int(self.comboBox_image_num.currentText()) == 0:
-                    plot = np.array(df1)
-                    img = pg.ImageItem(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                    plot = np.flip(np.array(df1), axis = 0)
+                    img = pg.ImageItem(np.rot90(plot,3), autoRange = True, autoLevels = True, autoHistogramRange = True)
                     self.plot_image.addItem(img)
                     
                     ##plot cross on pixel of highest count if check box is checked##
@@ -229,7 +230,7 @@ class window(Ui_Camera_loading_gui):
                                     c.append(col+ 0.5)
                         data = r, c
                         print(data)
-                        self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
+                        self.plot_image.plot(c,r, symbol = 'x', symbolBrush = (209,111,111,255))
                     else:
                         None
                     
@@ -248,8 +249,8 @@ class window(Ui_Camera_loading_gui):
                     a = list(range(num*self.pic_width, (self.pic_num*self.pic_width), 1))
                     b = a +list(range(0, (num-1)*self.pic_width,1))
                     pic = df1.drop(b)
-                    plot = np.array(pic)
-                    img = pg.ImageItem(plot, autoRange = True, autoLevels = True, autoHistogramRange = True)
+                    plot = np.flip(np.array(pic), axis = 0)
+                    img = pg.ImageItem(np.rot90(plot,3), autoRange = True, autoLevels = True, autoHistogramRange = True)
                     self.plot_image.addItem(img)
                     
                     ##plot cross on pixel of highest count if check box is checked##
@@ -266,7 +267,7 @@ class window(Ui_Camera_loading_gui):
                                     c.append(col+ 0.5)
                         data = r, c
                         print(data)
-                        self.plot_image.plot(r,c, symbol = 'x', symbolBrush = (209,111,111,255))
+                        self.plot_image.plot(c,r, symbol = 'x', symbolBrush = (209,111,111,255))
                     else:
                         None
                     
