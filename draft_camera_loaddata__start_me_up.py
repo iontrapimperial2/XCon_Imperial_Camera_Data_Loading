@@ -144,8 +144,8 @@ class window(Ui_Camera_loading_gui):
                     row_pro = list(df.sum(axis = 1))
                     col = list(range(1, self.pic_height + 1, 1))
                     row = list(range(1, self.pic_num*self.pic_width + 1, 1))
-                    self.projection_side.plot(col_pro,col, pen='r')
-                    self.projection_top.plot(row, row_pro, pen = 'r')
+                    self.projection_top.plot(col,col_pro, pen='r')
+                    self.projection_side.plot(row_pro,row, pen = 'r')
                     
                 
             else:
@@ -191,8 +191,8 @@ class window(Ui_Camera_loading_gui):
                     row_pro = list(df.sum(axis = 1))
                     col = list(range(1, self.pic_height + 1, 1))
                     row = list(range(1, self.pic_width + 1, 1))
-                    self.projection_side.plot(col_pro,col, pen='r')
-                    self.projection_top.plot(row, row_pro, pen = 'r')
+                    self.projection_top.plot(col,col_pro, pen='r')
+                    self.projection_side.plot(row_pro,row, pen = 'r')
 
 
 
@@ -241,8 +241,8 @@ class window(Ui_Camera_loading_gui):
                     row_pro = list(df1.sum(axis = 1))
                     col = list(range(1, self.pic_height + 1, 1))
                     row = list(range(1, self.pic_num*self.pic_width + 1, 1))
-                    self.projection_side.plot(col_pro,col, pen='r')
-                    self.projection_top.plot(row, row_pro, pen = 'r')
+                    self.projection_top.plot(col,col_pro, pen='r')
+                    self.projection_side.plot(row_pro,row, pen = 'r')
                     
                 else:
                     num = int(self.comboBox_image_num.currentText())
@@ -278,8 +278,8 @@ class window(Ui_Camera_loading_gui):
                     row_pro = list(pic.sum(axis = 1))
                     col = list(range(1, self.pic_height + 1, 1))
                     row = list(range(1, self.pic_width + 1, 1))
-                    self.projection_side.plot(col_pro,col, pen='r')
-                    self.projection_top.plot(row, row_pro, pen = 'r')
+                    self.projection_top.plot(col,col_pro, pen='r')
+                    self.projection_side.plot(row_pro,row, pen = 'r')
                 
                 
                 print('load success')
