@@ -48,7 +48,6 @@ class window(Ui_Camera_loading_gui):
         self.gridLayout_pic.addWidget(self.image)
         
         self.plot_image = self.image.addPlot(1, 0, rowspan=1, colspan=1)
-        #self.plot_image.getViewBox().invertY(True)
         self.plot_image.setAspectLocked()
 
         self.projection_top = self.image.addPlot(0, 0, rowspan=1, colspan=1)
@@ -59,7 +58,6 @@ class window(Ui_Camera_loading_gui):
         self.projection_side = self.image.addPlot(1, 1, rowspan=1, colspan=1)
         self.projection_side.showGrid(x = True, y = True, alpha = 0.75)
         self.projection_side.setYLink(self.plot_image)
-        #self.projection_side.getViewBox().invertY(True)
         
         self.plot_timestamp = self.image.addPlot(0, 1, rowspan=1, colspan=1)
         self.plot_timestamp.hideAxis('bottom')
@@ -142,8 +140,8 @@ class window(Ui_Camera_loading_gui):
                     self.pic_height = self.end_col - self.start_col + 1
                     col_pro = list(df.sum(axis = 0))
                     row_pro = list(df.sum(axis = 1))
-                    col = list(range(1, self.pic_height + 1, 1))
-                    row = list(range(1, self.pic_num*self.pic_width + 1, 1))
+                    col = list(np.arange(0.5, self.pic_height + 0.5, 1))
+                    row = list(np.arange(0.5, self.pic_num*self.pic_width + 0.5, 1))
                     self.projection_top.plot(col,col_pro, pen='r')
                     self.projection_side.plot(row_pro,row, pen = 'r')
                     
@@ -189,8 +187,8 @@ class window(Ui_Camera_loading_gui):
                     self.pic_height = self.end_col - self.start_col + 1
                     col_pro = list(df.sum(axis = 0))
                     row_pro = list(df.sum(axis = 1))
-                    col = list(range(1, self.pic_height + 1, 1))
-                    row = list(range(1, self.pic_width + 1, 1))
+                    col = list(np.arange(0.5, self.pic_height + 0.5, 1))
+                    row = list(np.arange(0.5, self.pic_width + 0.5, 1))
                     self.projection_top.plot(col,col_pro, pen='r')
                     self.projection_side.plot(row_pro,row, pen = 'r')
 
@@ -239,8 +237,8 @@ class window(Ui_Camera_loading_gui):
                     self.pic_height = self.end_col - self.start_col + 1
                     col_pro = list(df1.sum(axis = 0))
                     row_pro = list(df1.sum(axis = 1))
-                    col = list(range(1, self.pic_height + 1, 1))
-                    row = list(range(1, self.pic_num*self.pic_width + 1, 1))
+                    col = list(np.arange(0.5, self.pic_height + 0.5, 1))
+                    row = list(np.arange(0.5, self.pic_num*self.pic_width + 0.5, 1))
                     self.projection_top.plot(col,col_pro, pen='r')
                     self.projection_side.plot(row_pro,row, pen = 'r')
                     
@@ -276,8 +274,8 @@ class window(Ui_Camera_loading_gui):
                     self.pic_height = self.end_col - self.start_col + 1
                     col_pro = list(pic.sum(axis = 0))
                     row_pro = list(pic.sum(axis = 1))
-                    col = list(range(1, self.pic_height + 1, 1))
-                    row = list(range(1, self.pic_width + 1, 1))
+                    col = list(np.arange(0.5, self.pic_height + 0.5, 1))
+                    row = list(np.arange(0.5, self.pic_width + 0.5, 1))
                     self.projection_top.plot(col,col_pro, pen='r')
                     self.projection_side.plot(row_pro,row, pen = 'r')
                 
