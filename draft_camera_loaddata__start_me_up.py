@@ -28,6 +28,8 @@ class window(Ui_Camera_loading_gui):
         self.end_col = 0
         self.start_row = 0
         self.end_row = 0
+        self.hbin = 1
+        self.vbin = 1
         self.pic_width = 0
         self.pic_height = 0
         self.pic_num = 1
@@ -100,9 +102,12 @@ class window(Ui_Camera_loading_gui):
                 self.start_col = int(str(cam_settings[12])[17:-2])
     
                 self.end_col = int(str(cam_settings[13])[15:-2])
+                
+                self.hbin = int(str(cam_settings[16])[23:-2])
+                self.vbin = int(str(cam_settings[17])[21:-2])
     
-                self.pic_width = self.end_row - self.start_row + 1
-                self.pic_height = self.end_col - self.start_col + 1
+                self.pic_width = int((self.end_row - self.start_row + 1)/self.vbin)
+                self.pic_height = int((self.end_col - self.start_col + 1)/self.hbin)
                 self.pic_num = int(str(cam_settings[10])[26:-2])
                 print(self.pic_num)
                 print(self.pic_width)
@@ -136,8 +141,8 @@ class window(Ui_Camera_loading_gui):
                         None
                     
                     ##Projection Plots##
-                    self.pic_width = self.end_row - self.start_row + 1
-                    self.pic_height = self.end_col - self.start_col + 1
+                    self.pic_width = int((self.end_row - self.start_row + 1)/self.vbin)
+                    self.pic_height = int((self.end_col - self.start_col + 1)/self.hbin)
                     col_pro = list(df.sum(axis = 0))
                     row_pro = list(df.sum(axis = 1))
                     col = list(np.arange(0.5, self.pic_height + 0.5, 1))
@@ -182,9 +187,12 @@ class window(Ui_Camera_loading_gui):
                     self.start_col = int(str(cam_settings[8])[17:-2])
             
                     self.end_col = int(str(cam_settings[9])[15:-2])
+                    
+                    self.hbin = int(str(cam_settings[12])[23:-2])
+                    self.vbin = int(str(cam_settings[13])[21:-2])
             
-                    self.pic_width = self.end_row - self.start_row + 1
-                    self.pic_height = self.end_col - self.start_col + 1
+                    self.pic_width = int((self.end_row - self.start_row + 1)/self.vbin)
+                    self.pic_height = int((self.end_col - self.start_col + 1)/self.hbin)
                     col_pro = list(df.sum(axis = 0))
                     row_pro = list(df.sum(axis = 1))
                     col = list(np.arange(0.5, self.pic_height + 0.5, 1))
@@ -233,8 +241,8 @@ class window(Ui_Camera_loading_gui):
                         None
                     
                     ##Projection Plots##
-                    self.pic_width = self.end_row - self.start_row + 1
-                    self.pic_height = self.end_col - self.start_col + 1
+                    self.pic_width = int((self.end_row - self.start_row + 1)/self.vbin)
+                    self.pic_height = int((self.end_col - self.start_col + 1)/self.hbin)
                     col_pro = list(df1.sum(axis = 0))
                     row_pro = list(df1.sum(axis = 1))
                     col = list(np.arange(0.5, self.pic_height + 0.5, 1))
@@ -243,6 +251,12 @@ class window(Ui_Camera_loading_gui):
                     self.projection_side.plot(row_pro,row, pen = 'r')
                     
                 else:
+                    print(self.vbin)
+                    print(self.hbin)
+                    self.pic_width = int((self.end_row - self.start_row + 1)/self.vbin)
+                    self.pic_height = int((self.end_col - self.start_col + 1)/self.hbin)
+                    print(self.pic_width)
+                    print(self.pic_height)
                     num = int(self.comboBox_image_num.currentText())
                     a = list(range(num*self.pic_width, (self.pic_num*self.pic_width), 1))
                     b = a +list(range(0, (num-1)*self.pic_width,1))
@@ -270,8 +284,8 @@ class window(Ui_Camera_loading_gui):
                         None
                     
                     ##Projection Plots##
-                    self.pic_width = self.end_row - self.start_row + 1
-                    self.pic_height = self.end_col - self.start_col + 1
+                    self.pic_width = int((self.end_row - self.start_row + 1)/self.vbin)
+                    self.pic_height = int((self.end_col - self.start_col + 1)/self.hbin)
                     col_pro = list(pic.sum(axis = 0))
                     row_pro = list(pic.sum(axis = 1))
                     col = list(np.arange(0.5, self.pic_height + 0.5, 1))
